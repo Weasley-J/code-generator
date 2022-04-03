@@ -1,0 +1,74 @@
+logging:
+  level:
+    org.springframework.web.servlet.DispatcherServlet: debug
+    com.alibaba.cloud.nacos.client: error
+    com.alibaba.nacos: error
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: lejing-generator
+  cloud:
+    nacos:
+      server-addr: 192.168.31.106:8848
+      discovery:
+        server-addr: ${spring.cloud.nacos.server-addr}
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  web:
+    resources:
+      static-locations: classpath:/static/,classpath:/views/
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.31.106:3306/lejing_job?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+
+    #oracle配置
+    #    driver-class-name: oracle.jdbc.OracleDriver
+    #    url: jdbc:oracle:thin:@192.168.40.132:1521:xe
+    #    username: oracle
+    #    password: 123456
+    #SQLServer配置
+    #    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    #    url: jdbc:sqlserver://192.168.40.132:1433;DatabaseName=lejing_job
+    #    username: sqlserver
+    #    password: 123456
+    #PostgreSQL配置
+    #    driver-class-name: org.postgresql.Driver
+    #    url: jdbc:postgresql://192.168.40.132:5432/sonarqube
+    #    username: postgres
+    #    password: 123456
+
+#mongodb:
+#  host: localhost
+#  port: 27017
+#  auth: false #是否使用密码验证
+#  username: admin
+#  password: 123456
+#  source: 123456
+#  database: mongodb_test
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*Mapper.xml,mapper/**/*Dao.xml
+  type-aliases-package: com.**.generator.domain,cn.**.generator.domain,com.**.generator.entity,cn.**.generator.entity
+  configuration:
+    map-underscore-to-camel-case: on
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+pagehelper:
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+#指定要生成代码的数据库类型, 可选值: MYSQL, ORACLE, SQLSERVER, POSTGRESQL, MONGODB
+code:
+  generator:
+    db-type: MYSQL

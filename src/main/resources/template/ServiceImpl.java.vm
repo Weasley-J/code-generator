@@ -1,0 +1,41 @@
+package ${package}.${moduleName}.service.impl;
+
+import ${mainPath}.common.core.page.PageDomain;
+import ${mainPath}.common.core.page.PageResult;
+
+import ${package}.${moduleName}.mapper.${className}Mapper;
+import ${package}.${moduleName}.domain.${className};
+import ${package}.${moduleName}.service.${className}Service;
+
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * ${comments}Service业务层处理
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Service
+public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${className}> implements ${className}Service {
+
+    /**
+     * 查询${comments}分页列表
+     *
+     * @param page   分页参数
+     * @param ${classname} 分页对象
+     * @return ${comments}分页数据
+     */
+    @Override
+    public PageResult<${className}> queryPage(PageDomain page, ${className} ${classname}) {
+        PageResult<${className}> pageResult = new PageResult<>();
+        pageResult.startPage(page);
+        List<${className}> ${classname}List = this.list(Wrappers.lambdaQuery(${classname}));
+        return pageResult.getPage(${classname}List);
+    }
+
+}
