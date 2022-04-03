@@ -12,7 +12,8 @@
     <groupId>cn.alphahub.code</groupId>
     <artifactId>code-generator</artifactId>
     <version>1.0.0</version>
-    <description>springboot code-generator</description>
+    <description>springboot code-generator(spring-boot + mybatis-plus)</description>
+    <url>https://github.com/Weasley-J/code-generator</url>
 
     <properties>
         <maven-compiler-plugin.version>3.9.0</maven-compiler-plugin.version>
