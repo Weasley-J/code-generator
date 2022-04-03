@@ -12,7 +12,12 @@
     <groupId>cn.alphahub.code</groupId>
     <artifactId>code-generator</artifactId>
     <version>1.0.0</version>
-    <description>springboot code-generator(spring-boot + mybatis-plus)</description>
+    <description>
+        A web application to generate Java source code with spring-boot and mybatis-plus. Also,
+        The class of Domain,Mapper,XML of Mapper Interface,Service,Controller are included.
+        You can change the data source what you want to generate for your project in app running without restart this
+        code -generator application.
+    </description>
     <url>https://github.com/Weasley-J/code-generator</url>
 
     <properties>
