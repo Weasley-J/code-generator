@@ -12,9 +12,11 @@ spring:
     name: lejing-generator
   cloud:
     nacos:
-      server-addr: ${spring.cloud.nacos.config.server-addr}
+      server-addr: 192.168.31.106:8848
+      config:
+        server-addr: ${spring.cloud.nacos.server-addr}
       discovery:
-        server-addr: ${spring.cloud.nacos.config.server-addr}
+        server-addr: ${spring.cloud.nacos.server-addr}
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss

@@ -3,8 +3,11 @@ spring:
     name: lejing-generator
   cloud:
     nacos:
+      server-addr: 192.168.31.106:8848
       config:
-        server-addr: 192.168.31.106:8848
+        server-addr: ${spring.cloud.nacos.server-addr}
+      discovery:
+        server-addr: ${spring.cloud.nacos.server-addr}
         group: DEFAULT_GROUP
         namespace: b3bf69ba-f696-4479-aae1-94807a56eb90
         refresh-enabled: true
