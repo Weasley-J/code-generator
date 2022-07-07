@@ -8,6 +8,7 @@ import cn.alphahub.code.generator.utils.BizException;
 import cn.alphahub.code.generator.utils.GenUtils;
 import cn.alphahub.code.generator.utils.PageUtils;
 import cn.alphahub.code.generator.utils.Query;
+import cn.hutool.extra.spring.SpringUtil;
 import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.PropertyKeyConst;
 import com.alibaba.nacos.api.config.ConfigService;
@@ -25,6 +26,7 @@ import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.StringReader;
 import java.util.List;
 import java.util.Map;
@@ -101,6 +103,14 @@ public class SysGeneratorService {
      * @return nacos中存储的Properties配置文件
      */
     public Properties getGeneratorProperties() {
+        String nacosEnable = SpringUtil.getProperty("${code.generator.nacos-enable}");
+        if (StringUtils.isNoneBlank(nacosEnable) && Boolean.valueOf(nacosEnable).equals(false)) {
+            try {
+                return PropertiesLoaderUtils.loadAllProperties("generator.properties");
+            } catch (IOException e) {
+                throw new BizException("获取本地配置文件失败", e);
+            }
+        }
         Properties queryProperties = new Properties();
         queryProperties.put(PropertyKeyConst.SERVER_ADDR, serverAddr);
         queryProperties.put(PropertyKeyConst.NAMESPACE, namespace);

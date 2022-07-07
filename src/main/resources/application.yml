@@ -22,18 +22,21 @@ spring:
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
+
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+
   web:
     resources:
       static-locations: classpath:/static/,classpath:/views/
+
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.31.106:3306/lejing_job?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
-    username: root
-    password: 123456
+    url: jdbc:mysql://120.27.247.181:3306/rn_direct_payment?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: rn
+    password: Z9&K9h2R
 
     #oracle配置
     #    driver-class-name: oracle.jdbc.OracleDriver
@@ -76,3 +79,4 @@ pagehelper:
 code:
   generator:
     db-type: MYSQL
+    nacos-enable: false
