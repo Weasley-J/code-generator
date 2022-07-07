@@ -8,7 +8,6 @@ import cn.alphahub.code.generator.utils.BizException;
 import cn.alphahub.code.generator.utils.GenUtils;
 import cn.alphahub.code.generator.utils.PageUtils;
 import cn.alphahub.code.generator.utils.Query;
-import cn.hutool.extra.spring.SpringUtil;
 import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.PropertyKeyConst;
 import com.alibaba.nacos.api.config.ConfigService;
@@ -53,6 +52,9 @@ public class SysGeneratorService {
     private String dataId = "generator.properties";
 
     private String group = "DEFAULT_GROUP";
+
+    @Value("${code.generator.nacos-enable}")
+    private Boolean nacosEnable;
 
     @Autowired
     @Qualifier("initGeneratorDao")
@@ -103,8 +105,7 @@ public class SysGeneratorService {
      * @return nacos中存储的Properties配置文件
      */
     public Properties getGeneratorProperties() {
-        String nacosEnable = SpringUtil.getProperty("${code.generator.nacos-enable}");
-        if (StringUtils.isNoneBlank(nacosEnable) && Boolean.valueOf(nacosEnable).equals(false)) {
+        if (nacosEnable.equals(false)) {
             try {
                 return PropertiesLoaderUtils.loadAllProperties("generator.properties");
             } catch (IOException e) {
