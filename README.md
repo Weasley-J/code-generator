@@ -1,5 +1,7 @@
 # 代码生成服务
 
+需要单体的直接在开发电脑上运行的请移步[feature_单体应用(无nacos)](https://github.com/Weasley-J/code-generator/tree/feature_%E5%8D%95%E4%BD%93%E5%BA%94%E7%94%A8(%E6%97%A0nacos))分支
+
 > 基于人人开源项目二次开发，做了大量提升优化：
 >
 > 1. 集成`nacos`配置中心
