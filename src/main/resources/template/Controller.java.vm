@@ -32,7 +32,7 @@ public class ${className}Controller {
      * @return ${comments}分页数据
      */
     @GetMapping("/list")
-    public BaseResult<PageResult<${className}>> list(@ModelAttribute(name = "page") PageDomain page,
+    public Result<PageResult<${className}>> list(@ModelAttribute(name = "page") PageDomain page,
                                                      @ModelAttribute(name = "${classname}") ${className} ${classname}
     ) {
         PageResult<${className}> pageResult = ${classname}Service.queryPage(page, ${classname});
@@ -46,7 +46,7 @@ public class ${className}Controller {
      * @return ${comments}详细信息
      */
     @GetMapping("/info/{${pk.attrname}}")
-    public BaseResult<${className}> info(@PathVariable("${pk.attrname}") ${pk.attrType} ${pk.attrname}){
+    public Result<${className}> info(@PathVariable("${pk.attrname}") ${pk.attrType} ${pk.attrname}){
         ${className} ${classname} = ${classname}Service.getById(${pk.attrname});
         return BaseResult.ok(${classname});
     }
@@ -58,7 +58,7 @@ public class ${className}Controller {
      * @return 成功返回true,失败返回false
      */
     @PostMapping("/save")
-    public BaseResult<Boolean> save(@RequestBody ${className} ${classname}) {
+    public Result<Boolean> save(@RequestBody ${className} ${classname}) {
         boolean save = ${classname}Service.save(${classname});
         return BaseResult.ok(save);
     }
@@ -70,7 +70,7 @@ public class ${className}Controller {
      * @return 成功返回true,失败返回false
      */
     @PutMapping("/update")
-    public BaseResult<Boolean> update(@RequestBody ${className} ${classname}) {
+    public Result<Boolean> update(@RequestBody ${className} ${classname}) {
         boolean update = ${classname}Service.updateById(${classname});
         return BaseResult.ok(update);
     }
@@ -82,7 +82,7 @@ public class ${className}Controller {
      * @return 成功返回true, 失败返回false
      */
     @DeleteMapping("/delete/{${pk.attrname}s}")
-    public BaseResult<Boolean> delete(@PathVariable(name = "${pk.attrname}s") ${pk.attrType}[] ${pk.attrname}s){
+    public Result<Boolean> delete(@PathVariable(name = "${pk.attrname}s") ${pk.attrType}[] ${pk.attrname}s){
         boolean delete = ${classname}Service.removeByIds(Arrays.asList(${pk.attrname}s));
         return BaseResult.ok(delete);
     }
