@@ -1,7 +1,7 @@
 package ${package}.${moduleName}.service;
 
-import ${mainPath}.common.core.page.PageDomain;
-import ${mainPath}.common.core.page.PageResult;
+import ${mainPath}.common.core.page.PageParam;
+import ${mainPath}.common.core.page.PageWrapper;
 import ${package}.${moduleName}.domain.${className};
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,14 +13,12 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @date ${datetime}
  */
 public interface ${className}Service extends IService<${className}> {
-
     /**
      * 查询${comments}分页列表
      *
-     * @param page   分页参数
+     * @param pageParam   分页参数
      * @param ${classname} 分页对象
      * @return ${comments}分页数据
      */
-    PageResult<${className}> queryPage(PageDomain page, ${className} ${classname});
-
+    PageWrapper<${className}> pages(PageParam pageParam, ${className} ${classname})
 }

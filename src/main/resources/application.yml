@@ -9,7 +9,10 @@ server:
 
 spring:
   application:
-    name: lejing-generator
+    name: code-generator
+
+  profiles:
+    active: dev
 
   cloud:
     nacos:

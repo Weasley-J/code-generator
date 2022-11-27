@@ -1,15 +1,18 @@
 # 代码生成服务
 
-需要单体的直接在开发电脑上运行的请移步[feature_单体应用(无nacos)](https://github.com/Weasley-J/code-generator/tree/feature_%E5%8D%95%E4%BD%93%E5%BA%94%E7%94%A8(%E6%97%A0nacos))分支
+**需要单体的直接在开发电脑上运行的请移步[feature_单体应用(无nacos)](https://github.com/Weasley-J/code-generator/tree/feature_%E5%8D%95%E4%BD%93%E5%BA%94%E7%94%A8(%E6%97%A0nacos))分支**
 
 > 基于人人开源项目二次开发，做了大量提升优化：
 >
 > 1. 集成`nacos`配置中心
 > 2. 支持**不重启代码生成服务**动态刷新`com.zaxxer.hikari.HikariDataSource`数据连接池更换所需生成基础业务代码的数据库，意味着你可以**不重启服务**动态切换任意数据库:`MySQL` -> `MySQL`, `MySQL` -> `Oracle`, `Oracle`-> `PostgreSQL`, `PostgreSQL` -> `MySQL`, ...
 > 3. 支持**不重启代码生成服务**动态刷新数据库基础数据类型和`java`基础包装类型的映射关系，见配置文件：`generator.properties`
-> 4. [生成代码的BaseResult类去这里下载](https://github.com/Weasley-J/lejing-mall/blob/main/lejing-common/lejing-common-base-public/src/main/java/cn/alphahub/common/core/domain/BaseResult.java)
-> 5. JDK8 or latest required
-> 6.  `LocalDateTime`, `LocalDate`的序列化、反序列化至少需要`jackson-jsr310`以上`maven`依赖模块, `springboot` 版本大于等于 `springboot 2.4.x`不需要
+> 4. [Controller数据返回`Result.java`包装类类去这里下载](https://github.com/Weasley-J/lejing-mall/blob/main/lejing-common/lejing-common-base-public/src/main/java/cn/alphahub/common/core/domain/Result.java)
+> 5. 分页参数相关类：[PageHandler.java](https://github.com/Weasley-J/lejing-mall/blob/main/lejing-common/lejing-common-base-service/src/main/java/cn/alphahub/mall/common/page/PageHandler.java)，[PageParam.java](https://github.com/Weasley-J/lejing-mall/blob/main/lejing-common/lejing-common-base-service/src/main/java/cn/alphahub/mall/common/page/PageParam.java)，[PageWrapper.java](https://github.com/Weasley-J/lejing-mall/blob/main/lejing-common/lejing-common-base-service/src/main/java/cn/alphahub/mall/common/page/PageWrapper.java)
+> 6. JDK8 or latest required
+> 7. `LocalDateTime`, `LocalDate`的序列化、反序列化至少需要`jackson-jsr310`以上`maven`依赖模块, `springboot` 版本大于等于 `springboot 2.4.x`不需要
+
+
 
 ## 核心配置
 
