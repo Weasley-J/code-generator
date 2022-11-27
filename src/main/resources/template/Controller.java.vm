@@ -1,8 +1,9 @@
 package ${package}.${moduleName}.controller;
 
-import ${mainPath}.common.core.domain.BaseResult;
-import ${mainPath}.common.core.page.PageDomain;
-import ${mainPath}.common.core.page.PageResult;
+import ${mainPath}.common.core.domain.Result;
+import ${mainPath}.common.core.page.PageHandler;
+import ${mainPath}.common.core.page.PageParam;
+import ${mainPath}.common.core.page.PageWrapper;
 
 import ${package}.${moduleName}.domain.${className};
 import ${package}.${moduleName}.service.${className}Service;
