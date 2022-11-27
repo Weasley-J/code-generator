@@ -25,6 +25,7 @@ import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.StringReader;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +52,9 @@ public class SysGeneratorService {
     private String dataId = "generator.properties";
 
     private String group = "DEFAULT_GROUP";
+
+    @Value("${code.generator.nacos-enable}")
+    private Boolean nacosEnable;
 
     @Autowired
     @Qualifier("initGeneratorDao")
@@ -101,6 +105,13 @@ public class SysGeneratorService {
      * @return nacos中存储的Properties配置文件
      */
     public Properties getGeneratorProperties() {
+        if (nacosEnable.equals(false)) {
+            try {
+                return PropertiesLoaderUtils.loadAllProperties("generator.properties");
+            } catch (IOException e) {
+                throw new BizException("获取本地配置文件失败", e);
+            }
+        }
         Properties queryProperties = new Properties();
         queryProperties.put(PropertyKeyConst.SERVER_ADDR, serverAddr);
         queryProperties.put(PropertyKeyConst.NAMESPACE, namespace);
